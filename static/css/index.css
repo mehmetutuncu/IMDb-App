@@ -1,0 +1,54 @@
+body {
+    height: 100%;
+    background-color: black;
+    text-align: center;
+    color: wheat;
+}
+
+a {
+    text-decoration: none;
+    font-size: 26px;
+    color: wheat;
+}
+
+.container {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.container li {
+    margin: 15px auto;
+
+}
+
+.logo a img {
+    height: 100px;
+}
+
+.container li.category a:hover {
+    border-bottom: 2px solid whitesmoke;
+    margin: 2px auto;
+}
+
+.result {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+tr{
+    border: 2px solid wheat;
+}
+td{
+    border: 2px solid wheat;
+}
+
+.result thead{
+    font-size: 24px;
+}
+
+.result tbody a{
+    font-size: 18px;
+}
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel='icon' sizes='32x32'
+          href='https://m.media-amazon.com/images/G/01/imdb/images-ANDW73HA/favicon_desktop_32x32._CB1582158068_.png'/>
+    <title>IMDB APP</title>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+            data-auto-replace-svg="nest"></script>
+</head>
+<body>
+<ul class="container">
+    <li class="logo">
+        <a href="/"><img src="{% static 'images/logo.png' %}"></a>
+    </li>
+    <hr>
+    <li class="category">
+        <a href="{% url "movies:Top250Movies" %}">Top 250 Movies</a>
+    </li>
+    <li class="category">
+        <a href="{% url "movies:MostPopularMovies" %}">Most Popular Movies</a>
+    </li>
+    <hr>
+    <li class="category">
+        <a href="{% url "tv_shows:Top250TvShows" %}">Top 250 TV Shows</a>
+    </li>
+    <li class="category">
+        <a href="{% url "tv_shows:MostPopularTvShows" %}">Most Popular TV Shows</a>
+    </li>
+    <hr>
+    <li class="category">
+        <a href="https://github.com/mehmetutuncu"><i class="fab fa-github"></i>&nbsp;GitHub</a>
+    </li>
+</ul>
+
+{% if items|length > 0 %}
+    <hr>
+    <table class="result">
+        <thead>
+        <tr>
+            <td>&nbsp;</td>
+            <td>Rank & Title</td>
+            <td>IMDb Rating</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>
+                    <img src="{{ item.image }}">
+                </td>
+                <td>
+                    <a href="{{ item.detail_url }}" target="_blank">
+                        {% if selector == 'top_250' %}
+                            {{ item.top_250_order }}. {{ item.name }}
+                        {% elif selector == 'most_popular' %}
+                            {{ item.most_popular_order }}. {{ item.name }}
+                        {% endif %}
+                    </a>
+                </td>
+                <td>
+                    {% if item.rating > 0 %}
+                        {{ item.rating }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+</body>
+</html>
