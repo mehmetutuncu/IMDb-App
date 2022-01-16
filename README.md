@@ -26,3 +26,5 @@ Quit the server with CONTROL-C.
 
 Go to http://127.0.0.1:8000/ via browser.
 
+### Screenshot: 
+![screenshot](https://i.ibb.co/3CMSTmV/image.png)
